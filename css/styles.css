@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Roboto';
-    src: url(fonts/Roboto/Roboto-Regular.ttf);
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
 }
 
 * {
@@ -61,14 +61,16 @@ section {
 
 .product-link {
     text-decoration: none;
+    border-radius: 16px;
 }
 
 .product {
-    width: 200px;
+    min-width: 140px;
     border: 1px solid black;
     padding: 16px;
     border-radius: 16px;
-    min-height: 280px;
+    min-height: 320px;
+    max-width: 140px;
 }
 
 .product img {
@@ -80,6 +82,8 @@ section {
 .product-title {
     text-align: center;
     color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-price {

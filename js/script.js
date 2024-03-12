@@ -1,12 +1,16 @@
-console.log("product catalogue");
-
 const baseUrl = 'https://fakestoreapi.com/products';
+const productsArea = document.getElementById('products-area');
 const productsContainer = document.getElementById('products-container');
 const refreshBtn = document.getElementById('refresh-btn');
+const errorArea = document.getElementById('error-area');
+const errorDescription = document.getElementById('error-description');
+
+productsArea.style.display = "none";
+errorArea.style.display = "none";
 
 const fetchProducts = async () => {
     try {
-        const url = `${baseUrl}?limit=22`
+        const url = `${baseUrl}`;
         const response = await fetch(url);
 
         if (response.status == 200) {
@@ -15,9 +19,9 @@ const fetchProducts = async () => {
             console.log(products);
             displayProducts(shuffledProducts);
         } else if (response.status == 404) {
-            console.log("Products cannot be found");
+            displayError("Products cannot be found");
         } else {
-            console.log("Something unexpected happened. ", response.status);
+            displayError("Something unexpected happened. " + response.status);
         }
     } catch (error) {
         console.log('Error occurred', error);
@@ -25,7 +29,10 @@ const fetchProducts = async () => {
 }
 
 const displayProducts = (products) => {
-    //productsContainer.innerHTML = '';
+    productsArea.style.display = "block";
+    errorArea.style.display = "none";
+
+    productsContainer.innerHTML = '';
     products.map(product => {
         const productLink = document.createElement("a");
         const productDiv = document.createElement("div");
@@ -51,6 +58,13 @@ const displayProducts = (products) => {
     });
 }
 
+const displayError = (message) => {
+    productsArea.style.display = "none";
+    errorArea.style.display = "block";
+
+    errorDescription.innerHTML = message;
+}
+
 const shuffleArray = (array) => {
     return array.toSorted(() => 0.5 - Math.random());
 }
@@ -58,7 +72,6 @@ const shuffleArray = (array) => {
 fetchProducts();
 
 const refreshProducts = () => {
-    console.log("refresh");
     fetchProducts();
 }
 
