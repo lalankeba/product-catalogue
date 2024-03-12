@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(fonts/Roboto/Roboto-Regular.ttf);
+}
+
 * {
+    font-family: 'Roboto';
     margin: 0;
     padding: 0;
     outline: none;
@@ -16,7 +22,8 @@ header {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 48px;
+    margin: 24px 0px;
 }
 
 section {
@@ -39,7 +46,7 @@ section {
 /* ---------------- products -------------- */
 
 .sub-title {
-    margin: 10px 0px;
+    margin: 16px 0px;
     font-size: 28px;
 }
 
@@ -49,7 +56,11 @@ section {
     flex-wrap: wrap;
     justify-content:space-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 20px;
+}
+
+.product-link {
+    text-decoration: none;
 }
 
 .product {
@@ -57,21 +68,12 @@ section {
     border: 1px solid black;
     padding: 16px;
     border-radius: 16px;
-}
-
-.product-link {
-    text-decoration: none;
-}
-
-.product-link img {
-    width: 40px;
-    margin: auto;
-    display: block;
+    min-height: 280px;
 }
 
 .product img {
-    width: 40px;
-    margin: auto;
+    width: 80px;
+    margin: 12px auto;
     display: block;
 }
 

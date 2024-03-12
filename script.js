@@ -27,23 +27,27 @@ const fetchProducts = async () => {
 const displayProducts = (products) => {
     //productsContainer.innerHTML = '';
     products.map(product => {
+        const productLink = document.createElement("a");
         const productDiv = document.createElement("div");
         const img = document.createElement("img");
         const title = document.createElement("h3");
         const price = document.createElement("p");
 
+        productLink.classList.add("product-link");
         productDiv.classList.add("product");
         title.classList.add("product-title");
         price.classList.add("product-price");
 
+        productLink.setAttribute("href", "product.html?id=" + product.id);
         img.setAttribute("src", product.image);
         title.innerHTML = `${product.title}`;
-        price.innerHTML = `${product.price}`;
+        price.innerHTML = `$${product.price}`;
 
+        productLink.appendChild(productDiv);
         productDiv.appendChild(img);
         productDiv.appendChild(title);
         productDiv.appendChild(price);
-        productsContainer.appendChild(productDiv);
+        productsContainer.appendChild(productLink);
     });
 }
 
